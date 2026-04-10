@@ -8,22 +8,28 @@ export default function Login() {
   const [password, setPassword] = useState('');
   const router = useRouter();
   const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const handleLogin = () => {
-  if (!email || !password) {
-    setError('Please enter email and password');
-    return;
-  }
+    if (!email || !password) {
+      setError("Please enter email and password");
+      return;
+    }
 
-  if (email === 'admin@demo.com' && password === '123456') {
-    localStorage.setItem('loggedIn', 'true');
-    localStorage.setItem('userEmail', email);
-    document.cookie = "loggedIn=true; path=/";
-    router.push('/');
-  } else {
-    setError('Invalid credentials');
-  }
-};
+    setLoading(true);
+
+    setTimeout(() => {
+      if (email === "admin@demo.com" && password === "123456") {
+        localStorage.setItem("loggedIn", "true");
+        localStorage.setItem("userEmail", email);
+        document.cookie = "loggedIn=true; path=/";
+        router.push("/");
+      } else {
+        setError("Invalid credentials");
+        setLoading(false);
+      }
+    }, 500);
+  };
 
   return (
     <div className="container">
@@ -52,8 +58,8 @@ export default function Login() {
           }}
         />
         {error && <p className="error">{error}</p>}
-        <button className="button" onClick={handleLogin}>
-          Login
+        <button className="button" onClick={handleLogin} disabled={loading}>
+          {loading ? "Logging in..." : "Login"}
         </button>
       </div>
     </div>
