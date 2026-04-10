@@ -18,6 +18,7 @@ export default function Login() {
   if (email === 'admin@demo.com' && password === '123456') {
     localStorage.setItem('loggedIn', 'true');
     localStorage.setItem('userEmail', email);
+    document.cookie = "loggedIn=true; path=/";
     router.push('/');
   } else {
     setError('Invalid credentials');

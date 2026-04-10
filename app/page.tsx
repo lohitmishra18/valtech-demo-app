@@ -14,14 +14,14 @@ export default function Home() {
   if (confirmLogout) {
     localStorage.removeItem('loggedIn');
     localStorage.removeItem('userEmail');
+    document.cookie = "loggedIn=; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
     router.push('/login');
   }
 };
 
   useEffect(() => {
     const loggedIn = localStorage.getItem("loggedIn");
-
-    debugger;
+    
     if (loggedIn !== "true") {
       router.push("/login");
     } else {
