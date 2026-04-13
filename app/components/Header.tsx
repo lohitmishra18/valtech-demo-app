@@ -16,6 +16,7 @@ export default function Header() {
           <Link href="/about" className={pathname === '/about' ? 'active' : ''}>SSG</Link>
           <Link href="/posts" className={pathname === '/posts' ? 'active' : ''}>SSR</Link>
           <Link href="/csr" className={pathname === '/csr' ? 'active' : ''}>CSR</Link>
+          <Link href="/contact" className={pathname === '/contact' ? 'active' : ''}>Contact Search</Link>
         </div>
       </div>
     </header>

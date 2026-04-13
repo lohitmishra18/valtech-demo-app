@@ -11,6 +11,8 @@ export default async function Posts() {
   const data = await res.json();
   console.log("Fetching posts on server...");
 
+  <input placeholder="Search posts..." className="input" />;
+
   return (
     <div className="container">
       <h1>Posts (SSR)</h1>
